@@ -11,7 +11,7 @@ const ambientesRoute = require('./routes/ambientes.routes')
 const path = require('path')
 
 const app = express();
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3033;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
