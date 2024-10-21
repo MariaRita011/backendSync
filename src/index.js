@@ -1,4 +1,5 @@
 require('dotenv').config();
+require("./whatsapp/whatsapp");
 const express = require('express');
 const cors = require('cors'); 
 const usuariosRoute = require('./routes/usuarios.routes');
@@ -11,7 +12,9 @@ const ambientesRoute = require('./routes/ambientes.routes')
 const path = require('path')
 
 const app = express();
+
 const port = process.env.PORT || 3033;
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))

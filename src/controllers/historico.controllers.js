@@ -11,6 +11,11 @@ async function newPromiseClass(req, res) {
 
     try {
         await pool.query(query, values);
+        await pool.query('UPDATE ambientes SET disponivel = false WHERE id = $1', [ambiente]);
+        const responseAmbiente = await pool.query('SELECT * FROM ambientes WHERE id = $1', [ambiente]);
+        if(responseAmbiente.rows[0].chave === true) {
+            await pool.query('UPDATE chaves SET disponivel = false WHERE salas = $1', [ambiente]);
+        }
         res.status(200).json({ message: 'Sala reservada com sucesso' });
     } catch (error) {
         console.error(error);
